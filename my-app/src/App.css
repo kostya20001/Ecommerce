@@ -66,3 +66,32 @@
 .header a:active {
   transform: scale(0.98);
 }
+
+.app-container {
+  display: flex;
+  gap: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.sidebar {
+  flex-shrink: 0;
+  width: 280px;
+}
+
+.main-content {
+  flex: 1;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+    padding: 16px;
+  }
+  
+  .sidebar {
+    width: 100%;
+  }
+}
