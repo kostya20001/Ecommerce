@@ -10,7 +10,6 @@ function App() {
 
   const handleFilterApply = (filters) => {
     setCurrentFilters(filters);
-    // Здесь можно сделать запрос к API или отфильтровать данные
     console.log('Фильтры применены:', filters);
   };
   return (
@@ -33,12 +32,53 @@ function App() {
     </header>
 
      <div className="app-container">
-      
+
       <aside className="sidebar">
         <Filters onFilterApply={handleFilterApply} />
       </aside>
 
     </div>
+
+    <footer className='footer'>
+      <div>
+        <div>
+          <div>
+            <h3>About</h3>
+            <ul>
+              <li>About Us</li>
+              <li>Careers</li>
+              <li>Press</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Support</h3>
+            <ul>
+              <li>Contact</li>
+              <li>FAQ</li>
+              <li>Shipping</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Legal</h3>
+            <ul>
+              <li>Privacy Policy</li>
+              <li>Terms of Service</li>
+              <li>Returns</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Newsletter</h3>
+            <p>Subscribe for exclusive deals</p>
+            <input />
+            <button>ldl</button>
+          </div>
+        </div>
+        <div>
+          <p>© 2026 TechStore. All rights reserved.</p>
+        </div>
+      </div>
+
+    </footer>
     </>
   )
 }
