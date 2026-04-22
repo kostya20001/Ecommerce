@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import Filters from './Filters';
+import Test from './Header';
 import './App.css'
+import Header from './Header';
 
 function App() {
   const [currentFilters, setCurrentFilters] = useState({});
@@ -14,22 +13,7 @@ function App() {
   };
   return (
     <>
-    <header className='header'>
-      <div>
-        <div>
-          <button>TechStore</button>
-          <nav>
-            <a href="TV"> TV </a>
-            <a href="Phone"> Phone </a>
-            <a href="Laptop"> Laptop </a>
-          </nav>
-        </div>
-        <div>
-          <button>Корзина</button>
-          <button>Профиль</button>
-        </div>
-      </div>
-    </header>
+    <Header />
 
      <div className="app-container">
 
@@ -79,7 +63,7 @@ function App() {
           <p>© 2026 TechStore. All rights reserved.</p>
         </div>
       </div>
-      
+
     </footer>
     </>
   )
