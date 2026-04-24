@@ -2,11 +2,13 @@
     border: 1px solid #050505;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 350px;
+    width: 250px;
     height: 350px;
-    padding: 10px;
     margin-bottom: 20px;
     margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px 10px 10px;
 }
 
 .product-image {
@@ -24,7 +26,40 @@
 
 .model {
     font-size: 20px;
-    margin: auto;
+    margin: 5px 0;
     font-family: Arial, Helvetica, sans-serif;
-       
+
+}
+
+.price {
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10px 0;
+}
+
+.card-content {
+    flex: 1;
+}
+
+.ButtonCard {
+    background-color: #050505;
+    color: aliceblue;
+    border-radius: 8px;
+    border: none;
+    height: 35px;
+    width: 100%;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: auto;
+}
+
+.ButtonCard:hover {
+  background: #7a7a7a;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(39, 39, 39, 0.308);
+}
+
+.ButtonCard:active {
+  transform: translateY(0);
 }
