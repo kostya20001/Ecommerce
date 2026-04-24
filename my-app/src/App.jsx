@@ -4,6 +4,7 @@ import Test from './Header';
 import './App.css'
 import Header from './Header';
 import Footer from './Footer';
+import ProductCard from './ProductCard';
 
 function App() {
   const [currentFilters, setCurrentFilters] = useState({});
@@ -16,12 +17,16 @@ function App() {
     <>
     <Header />
 
-     <div className="app-container">
-
+    <div className="app-container">
       <aside className="sidebar">
         <Filters onFilterApply={handleFilterApply} />
       </aside>
-
+      <div class="products-grid">
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+      </div>
     </div>
 
     <Footer />

@@ -1,7 +1,8 @@
 .app-container {
   display: flex;
   gap: 32px;
-  max-width: 1400px;
+  align-items: flex-start;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 24px;
 }
@@ -9,6 +10,16 @@
 .sidebar {
   flex-shrink: 0;
   width: 280px;
+  top: 20px;
+  align-self: flex-start;
+  position: sticky;
+}
+
+.products-grid {
+    flex: 1;            /* Занимает всё оставшееся пространство */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .main-content {
