@@ -34,17 +34,6 @@ function Filters({ onFilterApply }) {
     console.log('Применены фильтры:', filters);
   };
 
-  const handleClearFilters = () => {
-    setSelectedBrand('');
-    setMinPrice('');
-    setMaxPrice('');
-    setIsBrandOpen(false);
-    
-    if (onFilterApply) {
-      onFilterApply({ brand: '', minPrice: null, maxPrice: null });
-    }
-  };
-
   return (
     <div className="filters-container">
       <h3 className="filters-title">Filters</h3>
@@ -119,9 +108,6 @@ function Filters({ onFilterApply }) {
       <div className="filter-actions">
         <button className="apply-button" onClick={handleApplyFilters}>
           Apply Filters
-        </button>
-        <button className="clear-button" onClick={handleClearFilters}>
-          Clear all
         </button>
       </div>
     </div>
