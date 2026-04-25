@@ -5,6 +5,7 @@ import './App.css'
 import Header from './Header';
 import Footer from './Footer';
 import ProductCard from './ProductCard';
+import Counter from './Counter';
 
 function App() {
   const [currentFilters, setCurrentFilters] = useState({});
@@ -16,18 +17,26 @@ function App() {
   return (
     <>
     <Header />
-
+    
     <div className="app-container">
       <aside className="sidebar">
         <Filters onFilterApply={handleFilterApply} />
       </aside>
-      <div class="products-grid">
+      <div>
+        <div class="products-count">
+        <Counter />
+        </div>
+        <div class="products-grid">
         <ProductCard />
         <ProductCard />
         <ProductCard />
         <ProductCard />
         <ProductCard />
         <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        </div>
       </div>
     </div>
 
