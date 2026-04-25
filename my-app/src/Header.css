@@ -51,7 +51,7 @@
 .header button:first-child {
   font-size: 20px;
   font-weight: 700;
-  color: #007bff; /* Синий акцент */
+  color: #000000; /* Синий акцент */
   padding: 8px 0; /* Убираем боковые отступы, т.к. gap уже есть */
 }
 

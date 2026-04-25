@@ -1,4 +1,6 @@
 import './Header.css';
+import cart from './assets/cart.svg';
+import person from './assets/person.svg';
 
 function Header({props}) {
     return (
@@ -13,8 +15,20 @@ function Header({props}) {
           </nav>
         </div>
         <div>
-          <button>Корзина</button>
-          <button>Профиль</button>
+          <button>
+            <img
+              src={cart}
+              alt="Cart"
+              style={{ width: '20px', height: '20px' }}
+            />
+          </button>
+          <button>
+            <img
+              src={person}
+              alt="Person"
+              style={{ width: '20px', height: '20px' }}
+            />
+          </button>
         </div>
       </div>
     </header>
