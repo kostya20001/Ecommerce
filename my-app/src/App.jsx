@@ -6,6 +6,7 @@ import Header from './Header';
 import Footer from './Footer';
 import ProductCard from './ProductCard';
 import Counter from './Counter';
+import Banner from './Banner';
 
 function App() {
   const [currentFilters, setCurrentFilters] = useState({});
@@ -21,6 +22,7 @@ function App() {
     <div className="app-container">
       <aside className="sidebar">
         <Filters onFilterApply={handleFilterApply} />
+        <Banner />
       </aside>
       <div>
         <div class="products-count">
