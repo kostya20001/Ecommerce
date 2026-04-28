@@ -1,25 +1,35 @@
 import React, { useState } from 'react';
 import './ProductCard.css'
 
-const ProductCard = ({props}) => {
+const ProductCard = ({ product }) => {
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [isLiked, setIsLiked] = useState(false);
 
-    const images = [
+    const {
+        id,
+        category,
+        make,
+        brand,
+        model,
+        price,
+        isSpecialOffer,
+        images = []
+    } = product;
+
+    const productImages = images.length > 0 ? images : [
         "https://img.mvideo.ru/Big/10033004bb6.jpg",
         "https://img.mvideo.ru/Big/10033004bb1.jpg",
         "https://img.mvideo.ru/Big/10033004bb2.jpg",
         "https://img.mvideo.ru/Big/10033004bb3.jpg",
         "https://img.mvideo.ru/Big/10033004bb4.jpg"
-    ];
-
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [isLiked, setIsLiked] = useState(false);
+    ]
 
     const nextImage = () => {
-        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % productImages.length);
     };
 
     const prevImage = () => {
-        setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+        setCurrentImageIndex((prevIndex) => (prevIndex - 1 + productImages.length) % productImages.length);
     };
 
     const toggleLike = (e) => {
@@ -27,8 +37,17 @@ const ProductCard = ({props}) => {
         setIsLiked(!isLiked);
     };
 
+    const formatPrice = (price) => {
+        return new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        }).format(price);
+    };
+
     return(
-        <div className="Card">
+        <div className="Card" data-id={id} data-category={category} data-make={make || brand}>
             <div className='CardImage'>
                 <button 
                     className={`like-button ${isLiked ? 'liked' : ''}`}
@@ -38,13 +57,19 @@ const ProductCard = ({props}) => {
                     {isLiked ? '❤️' : '🤍'}
                 </button>
 
+                 {isSpecialOffer && (
+                    <div className="special-offer-badge">
+                        Special Offer
+                    </div>
+                )}
+
                 <img 
                     className="product-image"
-                    src={images[currentImageIndex]} 
-                    alt="Телевизор LG"
+                    src={productImages[currentImageIndex]} 
+                    alt={`${make || brand} ${model}`}
                 />
 
-                {images.length > 1 && (
+                {productImages.length > 1 && (
                     <>
                         <button 
                             className="nav-button nav-button-left"
@@ -63,17 +88,19 @@ const ProductCard = ({props}) => {
                     </>
                 )}
 
-                {images.length > 1 && (
+                {productImages.length > 1 && (
                     <div className="image-counter">
-                        {currentImageIndex + 1} / {images.length}
+                        {currentImageIndex + 1} / {productImages.length}
                     </div>
                 )}
             </div>
 
             <div className='CardBody'>
-                <p className='brand'>производитель</p>
-                <p className='model'>модель</p>
-                <p className='price'>цена</p>
+                <div className="brand-category">
+                    <p className='brand'>{make || brand}</p>
+                </div>
+                <p className='model'>{model}</p>
+                <p className='price'>{formatPrice(price)}</p>
             <button className='ButtonCard'>Add to Cart</button>
             </div>
         </div>

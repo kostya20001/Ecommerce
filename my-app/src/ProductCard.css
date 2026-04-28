@@ -200,3 +200,38 @@
     font-size: 1.3rem;
   }
 }
+
+.special-offer-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #D4183D;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    animation: pulse 1.5s infinite;
+}
+
+.brand-category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+/* Адаптивность для бейджей */
+@media (max-width: 768px) {
+    .special-offer-badge {
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+    
+    .category-badge {
+        font-size: 9px;
+        padding: 3px 6px;
+    }
+}

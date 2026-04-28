@@ -17,6 +17,39 @@ function App() {
     setCurrentFilters(filters);
     console.log('Фильтры применены:', filters);
   };
+
+
+  const products = [
+    {
+        id: 1,
+        category: "tv",
+        make: "Samsung",
+        brand: "Samsung",
+        model: "65\" OLED 4K Smart TV",
+        price: 1299,
+        isSpecialOffer: true
+    },
+    {
+        id: 2,
+        category: "phone",
+        make: "Apple",
+        brand: "Apple",
+        model: "iPhone 15 Pro",
+        price: 999,
+        isSpecialOffer: false
+    },
+    {
+        id: 3,
+        category: "laptop",
+        make: "Lenovo",
+        brand: "Lenovo",
+        model: "ThinkPad X1 Carbon",
+        price: 1499,
+        isSpecialOffer: true
+    }
+  ];
+
+  
   return (
     <>
     <Header />
@@ -35,15 +68,9 @@ function App() {
         </div>
         </div>
         <div class="products-grid">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {products.map(product => (
+          <ProductCard key={product.id} product={product} />
+        ))}
         </div>
       </div>
     </div>
