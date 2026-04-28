@@ -7,8 +7,10 @@ import Footer from './Footer';
 import ProductCard from './ProductCard';
 import Counter from './Counter';
 import Banner from './Banner';
+import SortPanel from './SortPanel';
 
 function App() {
+
   const [currentFilters, setCurrentFilters] = useState({});
 
   const handleFilterApply = (filters) => {
@@ -24,9 +26,13 @@ function App() {
         <Filters onFilterApply={handleFilterApply} />
         <Banner />
       </aside>
+
       <div>
-        <div class="products-count">
+        <div class="products-count" >
         <Counter />
+        <div className='sort-panel'>
+        <SortPanel />
+        </div>
         </div>
         <div class="products-grid">
         <ProductCard />

@@ -16,10 +16,10 @@
 }
 
 .products-grid {
-    flex: 1;            /* Занимает всё оставшееся пространство */
+    flex: 1;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 20px; 
 }
 
 .main-content {
@@ -36,4 +36,15 @@
   .sidebar {
     width: 100%;
   }
+}
+
+.products-count {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.sort-panel {
+  margin-right: 40px;
 }
