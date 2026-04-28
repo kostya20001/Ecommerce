@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './ProductCard.css'
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, onQuantityChange }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isLiked, setIsLiked] = useState(false);
+    const [quantity, setQuantity] = useState(0);
 
     const {
         id,
@@ -44,6 +45,59 @@ const ProductCard = ({ product }) => {
             minimumFractionDigits: 0,
             maximumFractionDigits: 0
         }).format(price);
+    };
+
+     const handleAddToCart = () => {
+        setQuantity(1);
+        if (onQuantityChange) {
+            onQuantityChange(id, 1);
+        }
+    };
+
+    const handleIncrement = () => {
+        const newQuantity = quantity + 1;
+        setQuantity(newQuantity);
+        if (onQuantityChange) {
+            onQuantityChange(id, newQuantity);
+        }
+    };
+
+    const handleDecrement = () => {
+        const newQuantity = quantity - 1;
+        if (newQuantity === 0) {
+            setQuantity(0);
+            if (onQuantityChange) {
+                onQuantityChange(id, 0);
+            }
+        } else {
+            setQuantity(newQuantity);
+            if (onQuantityChange) {
+                onQuantityChange(id, newQuantity);
+            }
+        }
+    };
+
+    // Рендер кнопки в зависимости от количества
+    const renderCartButton = () => {
+        if (quantity === 0) {
+            return (
+                <button className='ButtonCard' onClick={handleAddToCart}>
+                    Add to Cart
+                </button>
+            );
+        } else {
+            return (
+                <div className="cart-controls">
+                    <button className="cart-decrement" onClick={handleDecrement}>
+                        −
+                    </button>
+                    <span className="cart-quantity">{quantity} in cart</span>
+                    <button className="cart-increment" onClick={handleIncrement}>
+                        +
+                    </button>
+                </div>
+            );
+        }
     };
 
     return(
@@ -101,7 +155,7 @@ const ProductCard = ({ product }) => {
                 </div>
                 <p className='model'>{model}</p>
                 <p className='price'>{formatPrice(price)}</p>
-            <button className='ButtonCard'>Add to Cart</button>
+            {renderCartButton()}
             </div>
         </div>
     );

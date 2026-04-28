@@ -8,9 +8,12 @@ import ProductCard from './ProductCard';
 import Counter from './Counter';
 import Banner from './Banner';
 import SortPanel from './SortPanel';
+import productsData from './data/products';
 
 function App() {
 
+  const [products] = useState(productsData);
+  const [filteredProducts, setFilteredProducts] = useState(products);
   const [currentFilters, setCurrentFilters] = useState({});
 
   const handleFilterApply = (filters) => {
@@ -18,49 +21,6 @@ function App() {
     console.log('Фильтры применены:', filters);
   };
 
-
-  const [products, setProducts] = useState([
-    {
-        id: 1,
-        category: "tv",
-        make: "Samsung",
-        brand: "Samsung",
-        model: "65\" OLED 4K Smart TV",
-        price: 1299,
-        isSpecialOffer: true
-    },
-    {
-        id: 2,
-        category: "phone",
-        make: "Apple",
-        brand: "Apple",
-        model: "iPhone 15 Pro",
-        price: 999,
-        isSpecialOffer: false
-    },
-    {
-        id: 3,
-        category: "laptop",
-        make: "Lenovo",
-        brand: "Lenovo",
-        model: "ThinkPad X1 Carbon",
-        price: 1499,
-        isSpecialOffer: true
-    },
-    {
-        id: 4,
-        category: "laptop",
-        make: "Lenovo",
-        brand: "Lenovo",
-        model: "ThinkPad X1 Carbon",
-        price: 1499,
-        isSpecialOffer: true
-    }
-  ]);
-
-  const [filteredProducts, setFilteredProducts] = useState(products);
-
-  
   return (
     <>
     <Header />
