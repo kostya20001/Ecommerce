@@ -19,7 +19,7 @@ function App() {
   };
 
 
-  const products = [
+  const [products, setProducts] = useState([
     {
         id: 1,
         category: "tv",
@@ -46,8 +46,19 @@ function App() {
         model: "ThinkPad X1 Carbon",
         price: 1499,
         isSpecialOffer: true
+    },
+    {
+        id: 4,
+        category: "laptop",
+        make: "Lenovo",
+        brand: "Lenovo",
+        model: "ThinkPad X1 Carbon",
+        price: 1499,
+        isSpecialOffer: true
     }
-  ];
+  ]);
+
+  const [filteredProducts, setFilteredProducts] = useState(products);
 
   
   return (
@@ -62,13 +73,16 @@ function App() {
 
       <div>
         <div class="products-count" >
-        <Counter />
+        <Counter count={filteredProducts.length} />
         <div className='sort-panel'>
-        <SortPanel />
+        <SortPanel 
+          products={products} 
+          onSortChange={setFilteredProducts} 
+        />
         </div>
         </div>
         <div class="products-grid">
-        {products.map(product => (
+        {filteredProducts.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}
         </div>
