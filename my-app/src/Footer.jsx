@@ -1,6 +1,6 @@
 import "./Footer.css"
 
-function Footer({props}){
+function Footer(){
     return (
         <footer className="footer">
       <div className="footer-container">

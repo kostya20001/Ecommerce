@@ -2,26 +2,30 @@ import React, { useState } from 'react';
 import './SortPanel.css'
 
 const SortPanel = ({ products, onSortChange }) => {
-  const [selectedBrand, setSelectedBrand] = useState('all');
-
-  const brands = ['', 'Samsung', 'LG', 'Sony', 'Google', 'Apple', 'Xiaomi', 'Lenovo', 'HP', 'ASUS', 'Acer'];
+  const [sortType, setSortType] = useState('default');
 
   const handleSort = (e) => {
-    const brand = e.target.value;
-    setSelectedBrand(brand);
+    const sortValue = e.target.value;
+    setSortType(sortValue);
     
     let sortedProducts = [...products];
     
-    if (brand !== '') {
-      // Сортируем так, чтобы выбранный бренд был сверху
-      sortedProducts.sort((a, b) => {
-        if (a.model === brand && b.model !== brand) return -1;
-        if (a.model !== brand && b.model === brand) return 1;
-        return a.model.localeCompare(b.model);
-      });
-    } else {
-      // Сортируем по алфавиту
-      sortedProducts.sort((a, b) => a.model.localeCompare(b.model));
+    switch(sortValue) {
+      case 'brand':
+        sortedProducts.sort((a, b) => {
+          const brandA = (a.make || a.brand || '').toLowerCase();
+          const brandB = (b.make || b.brand || '').toLowerCase();
+          return brandA.localeCompare(brandB);
+        });
+        break;
+      case 'price-low':
+        sortedProducts.sort((a, b) => a.price - b.price);
+        break;
+      case 'price-high':
+        sortedProducts.sort((a, b) => b.price - a.price);
+        break;
+      default:
+        sortedProducts.sort((a, b) => a.id - b.id);
     }
     
     onSortChange(sortedProducts);
@@ -29,17 +33,16 @@ const SortPanel = ({ products, onSortChange }) => {
 
   return ( 
     <select
-      value={selectedBrand}
+      value={sortType}
       onChange={handleSort}
       className="sort"
     >
-      {brands.map(brand => (
-        <option key={brand} value={brand}>
-          {brand === '' ? '' : ` ${brand}`}
-        </option>
-      ))}
+      <option value="default"></option>
+      <option value="brand">Sort by Brand</option>
+      <option value="price-low">Price: Low to High</option>
+      <option value="price-high">Price: High to Low</option>
     </select>
-    );
+  );
 };
 
 export default SortPanel;

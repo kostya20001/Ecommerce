@@ -2,7 +2,7 @@ import './Header.css';
 import cart from './assets/cart.svg';
 import person from './assets/person.svg';
 
-function Header({props}) {
+function Header() {
     return (
     <header className='header'>
       <div>

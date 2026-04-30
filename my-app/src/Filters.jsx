@@ -22,7 +22,7 @@ function Filters({ onFilterApply }) {
 
   const handleApplyFilters = () => {
     const filters = {
-      brand: selectedBrand,
+      brand: selectedBrand || null,
       minPrice: minPrice ? Number(minPrice) : null,
       maxPrice: maxPrice ? Number(maxPrice) : null
     };
@@ -31,7 +31,6 @@ function Filters({ onFilterApply }) {
       onFilterApply(filters);
     }
     
-    console.log('Применены фильтры:', filters);
   };
 
   return (
@@ -82,10 +81,10 @@ function Filters({ onFilterApply }) {
         <label className="filter-label">Price Range</label>
         <div className="price-inputs">
           <div className="price-input-wrapper">
-            <span className="currency-symbol">$</span>
+            <span className="currency-symbol"></span> {/*попробуем заменить*/}
             <input
               type="number"
-              placeholder="Min"
+              placeholder="0"
               value={minPrice}
               onChange={(e) => setMinPrice(e.target.value)}
               className="price-input"
@@ -93,10 +92,10 @@ function Filters({ onFilterApply }) {
           </div>
           <span className="price-separator">—</span>
           <div className="price-input-wrapper">
-            <span className="currency-symbol">$</span>
+            <span className="currency-symbol"></span> {/*попробуем заменить*/}
             <input
               type="number"
-              placeholder="Max"
+              placeholder="5000"
               value={maxPrice}
               onChange={(e) => setMaxPrice(e.target.value)}
               className="price-input"
